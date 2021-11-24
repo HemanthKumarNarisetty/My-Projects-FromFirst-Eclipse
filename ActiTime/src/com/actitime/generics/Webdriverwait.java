@@ -9,12 +9,12 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 
 public class Webdriverwait extends Base {
 
-	public void visibilityElement(WebDriver driver,WebElement element)
+	public static void visibilityElement(WebDriver driver,WebElement element)
 	{
 		WebDriverWait wait=new WebDriverWait(driver,20);
 		wait.until(ExpectedConditions.visibilityOf(element));
 	}
-	public void implicitWait()
+	public static void implicitWait()
 	{
 		driver.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);
 	}

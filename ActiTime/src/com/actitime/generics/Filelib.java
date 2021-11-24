@@ -6,6 +6,7 @@ import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.util.Properties;
+import java.util.TreeMap;
 
 import org.apache.commons.io.FileUtils;
 import org.apache.poi.EncryptedDocumentException;
@@ -51,5 +52,18 @@ public class Filelib extends Base{
 		FileOutputStream fos=new FileOutputStream("./data/InputData.xlsx");
 		wb.write(fos);
 		wb.close();
+	}
+	public static TreeMap<String,String> xmlData(String str)
+	{
+		String str1=str;
+		TreeMap<String, String>tm=new TreeMap<>();
+		String [] s1=str1.split("\\|");
+		
+		for(int i=0;i<s1.length;i++)
+		{
+			String[]s2=s1[i].split("\\=");
+			tm.put(s2[0],s2[1]);
+		}
+		return tm;
 	}
 }

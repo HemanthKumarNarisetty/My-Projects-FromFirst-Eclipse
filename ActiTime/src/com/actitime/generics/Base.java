@@ -13,11 +13,14 @@ import org.testng.annotations.BeforeClass;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Parameters;
 
+import com.actitime.pom.LoginPage;
+
 public class Base {
 
 	static
 	{
 		System.setProperty("webdriver.chrome.driver", "./driver/chromedriver.exe");
+		System.setProperty("webdriver.gecko.driver", "./driver/geckodriver.exe");
 	}
 	public static WebDriver driver;
 	@Parameters("browser")
@@ -41,8 +44,14 @@ public class Base {
 		driver.get(URL);
 	}
 	@BeforeMethod
-	public static void Login()
+	public static void Login() throws IOException
 	{
+		String un=Filelib.readPropertyfiledata("username");
+		String pw=Filelib.readPropertyfiledata("password");
+		LoginPage lp=new LoginPage(driver);
+		lp.setUserName(un);
+		lp.setPassword(pw);
+		lp.login();
 		
 	}
 	@AfterMethod

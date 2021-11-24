@@ -18,11 +18,11 @@ public class LoginPage {
 	{
 		PageFactory.initElements(driver, this);
 	}
-	public void userName(String str)
+	public void setUserName(String str)
 	{
 		userName.sendKeys(str);
 	}
-	public void password(String str)
+	public void setPassword(String str)
 	{
 		password.sendKeys(str);
 	}
